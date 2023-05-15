@@ -35,6 +35,10 @@ public class InsertNoticeProCtrl extends HttpServlet {
 		String content = "";
 		String author = "";
 		String fileName = "";
+		
+		NoticeDAO ndao = new NoticeDAO();
+		Notice noti = new Notice();
+		
 		//MultipartRequest의 옵션 내용
 		//1. request : 요청 받은 객체
 		//2. uploadFilePath : 서버상의 실제 디렉토리
@@ -46,7 +50,7 @@ public class InsertNoticeProCtrl extends HttpServlet {
 					uploadFileSizeLimit, encType, new DefaultFileRenamePolicy());
 			fileName = multi.getFilesystemName("file1"); // 업로드하고, 업로드된 파일의 이름 얻기
 			if (fileName == null) { // 파일이 업로드 되지 않았을때
-				System.out.print("파일 업로드 실패~!");
+				System.out.print("파일 업로드 실패");
 			}  // 파일이 업로드 되었을때
 			author = multi.getParameter("author");
 			title = multi.getParameter("title");
@@ -55,11 +59,9 @@ public class InsertNoticeProCtrl extends HttpServlet {
 			System.out.print("예외 발생 : " + e);
 		}
 		
-		NoticeDAO ndao = new NoticeDAO();
-		Notice noti = new Notice();
 		noti.setTitle(title);
 		noti.setContent(content);
-		noti.setFile1(fileName);
+		/*noti.setFile1(fileName);*/
 		noti.setAuthor(author);
 		int cnt = ndao.insertNotice(noti);	
 		if(cnt==0){ //글쓰기 실패

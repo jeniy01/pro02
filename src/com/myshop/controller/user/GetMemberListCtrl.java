@@ -40,7 +40,7 @@ public class GetMemberListCtrl extends HttpServlet {
 		
 		request.setAttribute("userList", userList);
 		
-		//디스패치로 view를 생성하여 userList.jsp로 요청 받은 userList를 포워드
+		//디스패치로 view를 생성하여 noticeList.jsp로 요청 받은 notiList를 포워드
 		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/admin/userList.jsp");
 		view.forward(request, response);
 		

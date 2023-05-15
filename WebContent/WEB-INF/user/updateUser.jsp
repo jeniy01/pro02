@@ -18,7 +18,7 @@ padding: 24px; border:2px solid #eee; height:600px; overflow-y:auto; }
 <%@ include file="../../header.jsp" %>
 <div class="content" style="padding-top:30px; margin-top:30px; border-top:3px solid #333; min-height:500px; ">
 	<section class="container-fluid">
-		<h2 class="title">회원가입</h2>
+		<h2 class="title">회원 정보 수정</h2>
 		<form name="frm1" id="frm1" action="${path1 }/UpdateUserPro.do" method="post">
 			<table class="table">
 				<tbody>
@@ -34,7 +34,7 @@ padding: 24px; border:2px solid #eee; height:600px; overflow-y:auto; }
 						<th>비밀번호</th>
 						<td>
 							<span>${user.pw }</span>
-							<input type="password" name="ppw" id="ppw" placeholder="비밀번호 입력" class="form-control" maxlength="15" value="${user.pw }" required />
+							<input type="password" name="ppw" id="ppw" placeholder="비밀번호 입력" class="form-control" maxlength="15" value="" required />
 							<input type="hidden" name="pw" id="pw" value="${user.pw }" />
 							<input type="hidden" name="hpw" id="hpw" value="${user.hpw }" />
 							<p>비밀번호는 최소 8자리에서 최대 16자리까지 숫자, 영문, 특수문자 각 1개 이상 포함되어야 함</p>
@@ -42,7 +42,7 @@ padding: 24px; border:2px solid #eee; height:600px; overflow-y:auto; }
 					</tr>
 					<tr>
 						<th>비밀번호 확인</th>
-						<td><input type="password" name="ppw2" id="ppw2" placeholder="비밀번호  확인 입력" class="form-control" value="${user.pw }" maxlength="15" /></td>
+						<td><input type="password" name="ppw2" id="ppw2" placeholder="비밀번호  확인 입력" class="form-control" value="" maxlength="15" /></td>
 						
 					</tr>
 					<tr>
@@ -65,7 +65,7 @@ padding: 24px; border:2px solid #eee; height:600px; overflow-y:auto; }
 							<input type="text" name="address1" id="address1" placeholder="기본 주소 입력" class="form-control" /><br>
 							<input type="text" name="address2" id="address2" placeholder="상세 주소 입력" class="form-control" /><br>
 							<input type="text" name="postcode" id="postcode" style="width:160px;float:left;margin-right:20px;" placeholder="우편번호" class="form-control">
-							<button type="button" id="post_btn" onclick="findAddr()" class="btn btn-primary">우편번호 검색</button>
+							<button type="button" id="post_btn" onclick="findAddr()" class="btn btn-primary" role="button">우편번호 검색</button>
 						</td>
 					</tr>
 					<tr>

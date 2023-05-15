@@ -29,8 +29,8 @@
 						<td>${pro.gname }
 							<input type="hidden" id="gname" name="gname" value="${pro.gname }">
 							<input type="hidden" id="cate" name="cate" value="${pro.cate }">
-							<input type="hidden" id="gcode" name="gcode" value="${gcode }">
-							<input type="hidden" id="id" name="id" value="${id }">
+							<input type="hidden" id="gcode" name="gcode" value="${pro.gcode }">
+							<input type="hidden" id="id" name="id" value="${user.id }">
 							<input type="hidden" id="name" name="name" value="${user.name }">
 							<input type="hidden" id="email" name="email" value="${user.email }">
 							<input type="hidden" id="utel" name="utel" value="${user.tel }">
@@ -45,8 +45,8 @@
 						<th>상품 설명</th><td>${pro.mung }</td>
 					</tr>
 					<tr>
-						<th>구매 가격</th><td>${pro.price*1.4 }
-						<input type="hidden" id="price" name="price" value="${pro.price*1.4 }"></td>
+						<th>구매 가격</th><td>${pro.price }
+						<input type="hidden" id="price" name="price" value="${pro.price }"></td>
 					</tr>
 					<tr>
 						<th><label for="amount">수량</label></th>
@@ -295,12 +295,12 @@
 				}
 			}).change();
 			
-			$("#pay").click(function(){
+			/* $("#pay").click(function(){
 				console.log($("#ptype").val());
 				console.log($("#paycom").val());
 				console.log($("#ptnum").val());
 				$("#paymentResult").html($("#ptype").val()+"<br>"+$("#paycom").val()+"<br>"+$("#ptnum").val());
-			});
+			}); */
 		});
 		function payCheck(f){
 			var payCk = f.payck.value;

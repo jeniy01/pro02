@@ -53,7 +53,7 @@ public class Oracle11 {
 	
 	//장바구니 관련 SQL
 	final static String BASKET_SELECT_ALL = "select * from basket order by bnum desc";
-	final static String BASKET_SELECT_ALL2 = "select basket.bnum as bnum, basket.id as id, user1.name as name, basket.gcode as gcode, product.gname as gname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.gcode=product.pgcode";
+	final static String BASKET_SELECT_ALL2 = "select basket.bnum as bnum, basket.id as id, user1.name as name, basket.gcode as gcode, product.gname as gname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.gcode=product.gcode";
 	final static String BASKET_SELECT_BYID = "select * from basket where id=?";
 	final static String BASKET_SELECT_BYID2 = "select basket.bnum as bnum, basket.id as id, user1.name as name, basket.gcode as gcode, product.gname as gname, basket.amount as amount, product.price as price from basket, user1, product where basket.id=user1.id and basket.gcode=product.gcode and basket.id=?";
 	final static String BASKET_SELECT_BYPRODUCT = "select * from basket where gcode=?";
@@ -68,6 +68,20 @@ public class Oracle11 {
 	final static String ADD_SALES = "insert into buy values (?,?,?,?,?,default,?,?,?,?,?)";
 	final static String ADD_PAYMENT = "insert into payment values (?,?,?,?,?,?,default)";
 	final static String BUY_TRANS_BASKET = "delete from basket where bnum=?";
+	final static String BYID_BUY_LIST = "select * from buy where id=? order by ocode desc";
+	final static String BYID_BUY = "select * from buy where id=? and ocode=?";
+	final static String PAY_LIST = "select * from payment order by pnum desc";
+	final static String BYOCODE_PAY = "select * from payment where ocode=? order by pnum desc";
+	final static String SALES_LIST = "select buy.ocode as ocode, buy.id as id, buy.gcode as gcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode,payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode order by buy.ocode";
+	final static String SALES_INFO = "select buy.ocode as ocode, buy.id as id, buy.gcode as gcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode,payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode and buy.ocode=? order by buy.ocode";
+	final static String BYID_SALES_LIST = "select buy.ocode as ocode, buy.id as id, buy.gcode as gcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode,payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode and buy.id=? order by buy.ocode";
+	final static String BYID_GET_SALE = "select buy.ocode as ocode, buy.id as id, buy.gcode as gcode, buy.amount as amount, buy.price as price, buy.odate as odate, buy.ostate as ostate, buy.tel as tel, buy.dname as dname, buy.addr as addr, buy.dcode as dcode, payment.pnum as pnum, payment.ptype as ptype, payment.ptnum as ptnum from buy, payment where payment.ocode=buy.ocode and id=? and buy.ocode=?";
+	final static String UPDATE_SURVEY = "update buy set dname=?, dcode=?, ostate=? where ocode=?";
+	final static String DELETE_BUY = "delete from buy where ocode=?";
+	final static String DELETE_PAYMENT = "delete from payment where ocode=?";
+	final static String RETURN_PRODUCT = "update product set amount=amount+? where gcode=?";
+	final static String RETURN_SALES = "update buy set ostate='반품요청' where ocode=?";
+	final static String OK_SALES = "update buy set ostate='구매완료' where ocode=?";
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName(driver);

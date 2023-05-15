@@ -22,7 +22,7 @@ public class InsertBasketProCtrl extends HttpServlet {
 		bas.setAmount(Integer.parseInt(request.getParameter("amount")));
 		
 		BasketDAO dao = new BasketDAO();
-		int cnt = dao.insertBasket(bas);
+		dao.insertBasket(bas);
 		
 		response.sendRedirect("MyBasket.do?id="+request.getParameter("id"));
 	}

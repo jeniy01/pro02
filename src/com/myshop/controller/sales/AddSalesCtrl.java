@@ -29,24 +29,25 @@ public class AddSalesCtrl extends HttpServlet {
 		String gcode = request.getParameter("gcode");
 		String id = request.getParameter("id");
 		
+		//장바구니에서 넘어온 데이터 처리
 		String bnum = "";
 		int amount = 1;
-		String bcode = request.getParameter("bnum");
-		String pcs = request.getParameter("amount");
-		
-		ProductDAO dao = new ProductDAO();	 
-		UserDAO udao = new UserDAO();
-		
-		if(bcode!=null && pcs!=null){
-			bnum = bcode;
+		String pcs = request.getParameter("amount");		
+		if(request.getParameter("bnum")!=null){
+			bnum = request.getParameter("bnum");
 			amount = Integer.parseInt(pcs);
 			request.setAttribute("bnum", bnum);
+			request.setAttribute("amount", amount);
 		}
 
+		//상품 정보 로딩
 		String msg = "제품을 구매합니다.";
+		ProductDAO dao = new ProductDAO();
 		Product pro = dao.getProduct(gcode);
-		User user = new User();
 		
+		//사용자 정보 로딩
+		UserDAO udao = new UserDAO();
+		User user = new User();
 		try {
 			user = udao.myInfo(id);
 		} catch (InvalidKeyException | NoSuchPaddingException
@@ -58,7 +59,7 @@ public class AddSalesCtrl extends HttpServlet {
 		
 		request.setAttribute("user", user);	//구매자 정보
 		request.setAttribute("pro", pro);	//한 개의 상품 정보
-		request.setAttribute("amount", amount);
+		
 		request.setAttribute("id", id);
 		request.setAttribute("msg", msg);
 		

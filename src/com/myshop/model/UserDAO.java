@@ -308,7 +308,7 @@ public class UserDAO {
 					hpw+="*";
 				}
 				user.setPw(vpw+hpw);
-				user.setHpw(qpw);
+				/*user.setHpw(qpw);*/
 				user.setName(rs.getString("name"));
 				user.setTel(rs.getString("tel"));
 				user.setEmail(rs.getString("email"));

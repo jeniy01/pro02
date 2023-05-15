@@ -48,7 +48,7 @@
 							<h3><strong>${pro.gname }</strong></h3>
 							<p class="comment"><strong>상품 설명</strong> :<br>${pro.mung }</p>
 							<p><strong>수량</strong> :
-								<c:if test="${pro.amount<=0 }"><span>개</span></c:if>
+								<c:if test="${pro.amount<=0 }"><span>품절</span></c:if>
 								<c:if test="${pro.amount>0 }">${pro.amount }</c:if>
 							</p>
 							<p><strong>가격</strong> : <fmt:formatNumber value="${pro.price }" type="currency" /></p>

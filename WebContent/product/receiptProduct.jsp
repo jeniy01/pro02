@@ -59,7 +59,7 @@
 						<th><label for="amount">입고할 수량</label></th>
 						<td><input type="number" name="amount" id="amount" value="1" min="1" max="500" title="1~500" class="form-control"></td>
 					</tr>
-<%-- 					<tr>
+<%-- 				<tr>
 						<th>SNS</th>
 						<td><a href="${pro.utburl }" target="_blank" title="유튜브" class="btn btn-danger glyphicon glyphicon-eye-open"> YouTube</a></td>
 					</tr> --%>

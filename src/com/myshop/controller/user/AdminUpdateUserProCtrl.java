@@ -36,7 +36,7 @@ public class AdminUpdateUserProCtrl extends HttpServlet {
 		String ppw = request.getParameter("ppw");
 
 		String passwd = "";
-		if(ppw!=null){
+		if(pw!=null){
 			try {
 				passwd = AES256.encryptAES256(ppw, key);
 			} catch (InvalidKeyException | NoSuchAlgorithmException
@@ -45,7 +45,7 @@ public class AdminUpdateUserProCtrl extends HttpServlet {
 					| IllegalBlockSizeException e) {
 				e.printStackTrace();
 			}
-		} else {
+		} /*else {
 			try {
 				passwd = AES256.encryptAES256(hpw, key);
 			} catch (InvalidKeyException | NoSuchAlgorithmException
@@ -54,7 +54,7 @@ public class AdminUpdateUserProCtrl extends HttpServlet {
 					| IllegalBlockSizeException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
 		user.setId(id);
 		user.setPw(passwd);
 		user.setName(request.getParameter("name"));

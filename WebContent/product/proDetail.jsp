@@ -64,7 +64,7 @@
 							<c:if test="${pro.amount>0 && !sid.equals('admin')}">
 								<c:if test="${!empty sid}">
 									<a href="${path1 }/InsertBasket.do?gcode=${pro.gcode}" class="btn btn-primary" role="button">장바구니</a>
-									<a href="${path1 }/InsertSales.do?gcode=${pro.gcode}" class="btn btn-danger" role="button">구매</a>
+									<a href="${path1 }/AddSales.do?pcode=${pro.pcode}&id=${sid }" class="btn btn-danger" role="button">구매</a>
 								</c:if>
 								<a href="${path1 }/ProductList.do?cate=${pro.cate}" class="btn btn-primary" role="button">목록</a>
 							</c:if>

@@ -71,11 +71,4 @@ public class Product {
 	public void setCate(String cate) {
 		this.cate = cate;
 	}
-	@Override
-	public String toString() {
-		return "Goods [gcode=" + gcode + ", gname=" + gname + ", gram=" + gram
-				+ ", price=" + price + ", mung=" + mung + ", amount=" + amount
-				+ ", pic1=" + pic1 + ", pic2=" + pic2 + ", pic3=" + pic3
-				+ ", cate=" + cate + "]";
-	}
 }

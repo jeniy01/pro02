@@ -24,6 +24,7 @@ alter table buy add dname varchar2(30);
 alter table buy add addr varchar2(300);
 alter table buy add dcode varchar2(20);
 alter table buy drop primary key;
+alter table buy add primary key(ocode);
 commit;
 select * from buy;
 
@@ -408,6 +409,7 @@ select * from product where cate='0304' order by pcode desc;
 commit;
 
 select * from product;
+desc buy;
 delete from product where gram='90.5g';
 delete from product where gname='프로폴리스 스프레이';
 delete from product where gname='달맞이꽃종자유';
@@ -425,5 +427,9 @@ update user1 set pw='yPaTreMWGPIRkeVi6QJnXWxALWN8VoDTy3FX9FdAbg0yiADrNHr6H4LJCk8
 update user1 set pw='1mkHre2YXueO2E9RtdjzZnCvP3fwXSEP8fPIGSrAIFKDrTmjJ/L8PlY15OOckeKWtuDv4g==' where id='admin';
 commit;
 
+select * from sales;
 select * from basket;
+desc basket;
 select * from payment;
+select * from buy;
+

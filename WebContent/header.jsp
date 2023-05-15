@@ -17,6 +17,7 @@
 				<c:if test="${!empty sid }">
 					<li><a href="${path }/MyPage.do">마이페이지</a></li>
 					<li><a href="${path }/MyBasket.do?id=${sid }">장바구니</a></li>
+					<li><a href="${path }/MySalesList.do?id=${sid }">구매내역</a></li>
 					<li><a href="${path }/UserLogout.do">로그아웃</a></li>
 				</c:if>
 			</ul>
@@ -106,7 +107,7 @@
 		            <li><a href="${path1 }/AdminInventoryList.do">재고 관리</a></li>
 		            <li class="divider"></li>
 		            <li><a href="${path1 }/AdminBasketList.do">장바구니 관리</a></li>
-		           	<li><a href="${path1 }/AdminCarryList.do">배송 관리</a></li>
+		           	<li><a href="${path1 }/Survey.do">배송 관리</a></li>
 		            <li><a href="${path1 }/AdminPayList.do">결제 관리</a></li>
 		          </ul>
 		        </li>

@@ -27,7 +27,6 @@ public class AdminResetUserCtrl extends HttpServlet {
 		String id = request.getParameter("id");
 		UserDAO dao = new UserDAO();
 		User user = new User();
-		String msg = "";
 		
 		user = dao.getTel(id);
 		int ln = user.getTel().length();
