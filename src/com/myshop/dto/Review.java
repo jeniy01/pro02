@@ -1,18 +1,20 @@
 package com.myshop.dto;
 
 import java.util.Date;
-//리뷰
+
 public class Review {
-	private String rcode;
-	private String id;
-	private String ocode;
-	private String rdate;
-	private String hg;
-	private String str;
+	private	String rcode;
+	private	String id;
+	private	String ocode;
+	private	String resdate;
+	private	String rcontent;
+	private	int	rpoint;
+	
 	public Review(){
 		Date now = new Date();
-		this.rdate = now.toString();
+		this.resdate = now.toString();
 	}
+
 	public String getRcode() {
 		return rcode;
 	}
@@ -37,27 +39,27 @@ public class Review {
 		this.ocode = ocode;
 	}
 
-	public String getRdate() {
-		return rdate;
+	public String getResdate() {
+		return resdate;
 	}
 
-	public void setRdate(String rdate) {
-		this.rdate = rdate;
+	public void setResdate(String resdate) {
+		this.resdate = resdate;
 	}
 
-	public String getHg() {
-		return hg;
+	public String getRcontent() {
+		return rcontent;
 	}
 
-	public void setHg(String hg) {
-		this.hg = hg;
+	public void setRcontent(String rcontent) {
+		this.rcontent = rcontent;
 	}
 
-	public String getStr() {
-		return str;
+	public int getRpoint() {
+		return rpoint;
 	}
 
-	public void setStr(String str) {
-		this.str = str;
+	public void setRpoint(int rpoint) {
+		this.rpoint = rpoint;
 	}
 }

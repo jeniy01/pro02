@@ -8,29 +8,34 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.myshop.dto.Buy;
-import com.myshop.model.SalesDAO;
+import com.myshop.dto.Review;
+import com.myshop.model.ReviewDAO;
 
-@WebServlet("/SurveyPro.do")
-public class SurveyProCtrl extends HttpServlet {
+@WebServlet("/AddReviewPro.do")
+public class AddReviewProCtrl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		String ocode = request.getParameter("ocode");
-		Buy buy = new Buy();
-		buy.setOcode(request.getParameter("ocode"));
-		buy.setDname(request.getParameter("dname"));
-		buy.setDcode(request.getParameter("dcode"));
-		buy.setOstate(request.getParameter("ostate"));
 		
-		SalesDAO dao = new SalesDAO();
-		int cnt = dao.surveyUpdate(buy);
+		ReviewDAO dao = new ReviewDAO();
+		Review rev = new Review();
+		rev.setRcode(dao.getRcodeGenerator());
+		
+		String id = request.getParameter("id"); 
+		rev.setId(id);
+		
+		String ocode = request.getParameter("ocode");
+		rev.setOcode(ocode);
+		rev.setRcontent(request.getParameter("rcontent"));
+		rev.setRpoint(Integer.parseInt(request.getParameter("rpoint")));
+		
+		int cnt = dao.addReview(rev);
 		if(cnt>0){
-			response.sendRedirect("Survey.do");
+			response.sendRedirect("MySalesList.do?id="+id);
 		} else {
-			response.sendRedirect("SurveyLoad.do?ocode="+ocode);
+			response.sendRedirect("AddResultUserReview.do?ocode="+ocode);
 		}
 	}
 }

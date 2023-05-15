@@ -21,7 +21,7 @@
 		<h2>판매/배송 처리</h2>
 		<p>${msg }</p>
 		<form action="${path1 }/SurveyPro.do" method="POST">
-			<h3>판매/배송 처리</h3>
+			<!-- <h3>판매/배송 처리</h3> -->
 			<table class="table">
 				<tbody>
 					<tr>
@@ -76,7 +76,7 @@
 			</table>
 			<div class="btn-group">
 				<input type="submit" value="배송처리" class="btn btn-danger">
-				<a href="${path1 }/AdminCancle.do?ocode=${sale.ocode} ">주문 취소 처리</a>
+				<a href="${path1 }/AdminCancle.do?ocode=${sale.ocode}" class="btn btn-primary">주문 취소 처리</a>
 				<a href="javascript:history.go(-1)" class="btn btn-primary">뒤로 가기</a>				
 			</div>
 		</form>

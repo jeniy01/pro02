@@ -51,6 +51,17 @@ commit;
 create table review1(rcode varchar2(20) primary key, id varchar2(20) not null, ocode varchar2(20), rdate date, hg varchar2(500), str varchar2(20));
 alter table review1 add constraint fk_id4 foreign key(id) references user1 (id);
 alter table review1 add constraint fk_ocode2 foreign key(ocode) references order1 (ocode);
+alter table review rename column rdate to resdate;
+alter table review drop column resdate;
+alter table review drop column hg;
+alter table review add resdate date default sysdate;
+desc review;
+rename review1 to review;
+--drop table review;
+commit;
+create table review(rcode varchar2(8) primary key, id varchar2(20), ocode varchar2(8), resdate date default sysdate, rcontent varchar2(500) not null, rpoint int default 5, constraint usr_fk foreign key (id) references user1(id), constraint byr_fk foreign key (ocode) references buy(ocode));
+--create table review(rcode varchar2(8) primary key, id varchar2(20), ocode varchar2(8), resdate date default sysdate, rcontent varchar2(500) not null, rpoint int default 5, constraint usr_fk foreign key (id) references user1(id), constraint byr_fk foreign key (ocode) references buy(ocode));
+select * from review;
 
 drop table review1;
 drop table pay1;
@@ -130,8 +141,8 @@ insert into pay1 values('10004','lmk','1004','체크카드','214-31-415617',3500
 insert into review1 values('10001','kbs','1001','2023-04-20','상품 잘 받았습니다.','5');
 insert into review1 values('10002','sbs','1002','2023-04-20','효과있어요.','4');
 */
-insert into review1 values('10001','lmk','1001','2023-04-20','상품 잘 받았습니다.','4');
-insert into review1 values('10002','ljn','1002','2023-04-20','효과있어요.','5');
+insert into review values('10001','lmk','10001',default,'상품 잘 받았습니다.','4');
+insert into review values('10002','ljn','10002',default,'효과있어요.',default);
 
 commit;
 
@@ -180,7 +191,7 @@ commit;
 
 update user1 set pw='HnUx6KGntl0kvHgOlr9WudQvtIF8JneNwO5AcseGQ2LL6M3NeRc7K4TDKKkzJYLRq1Bx6A==' where id='lmk';
 update user1 set pw='Xvj2C70tbqVrXggKFgSnVn6zRT6MRzSIYMDD0SLlvbhSfn1krh8Na3aq62V18uFcCWbnyA==' where id='ldh';
-update user1 set pw='vpSuKjREot5g/rBkLFX4gI4YbMWNOElKj1BlOO4g54xu5hc9+2TZ3fNgtutPcpKaqCeg4Q==' where id='ljn';
+update user1 set pw='Eni77UgCnS2RkTs1ayfoGXXO3g+gZE97pm756SJoLGvXCVTy42fv0bzGfP59uz6V44M+dA==' where id='ljn';
 update user1 set pw='JtVYgXMs8VAZgRLm03Fbv+J1xRy7wCRPMAEjLTiy/bBRcf4nVSP9ynDYIpn2J3OthVqZFg==' where id='njm';
 update user1 set pw='yPaTreMWGPIRkeVi6QJnXWxALWN8VoDTy3FX9FdAbg0yiADrNHr6H4LJCk87IpBWmMFRyw==' where id='pjs';
 update user1 set pw='8bZ8JlVxwmrawly8Qge2x7M0P66kQMaFJv6u1F8vj1RZnEGyinYOb7uhinRC88g86F0szA==' where id='admin';
@@ -432,4 +443,9 @@ select * from basket;
 desc basket;
 select * from payment;
 select * from buy;
+desc buy;
 
+select * from review;
+alter table buy modify ostate varchar2(100);
+alter table buy modify dname varchar2(100);
+commit;

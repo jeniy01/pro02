@@ -80,8 +80,17 @@ public class Oracle11 {
 	final static String DELETE_BUY = "delete from buy where ocode=?";
 	final static String DELETE_PAYMENT = "delete from payment where ocode=?";
 	final static String RETURN_PRODUCT = "update product set amount=amount+? where gcode=?";
-	final static String RETURN_SALES = "update buy set ostate='반품요청' where ocode=?";
-	final static String OK_SALES = "update buy set ostate='구매완료' where ocode=?";
+	final static String RETURN_SALES = "update buy set ostate=? where ocode=?";
+	final static String OK_SALES = "update buy set ostate=? where ocode=?";
+	
+	//리뷰 관련 SQL
+	final static String REVIEW_PRODUCT = "select * from product where gcode = (select gcode from buy where ocode=?)";
+	final static String RCODE_GENERATOR = "select rcode from (select * from review order by rcode desc) where rownum = 1";
+	final static String ADD_REVIEW = "insert into review values (?,?,?,default,?,?)";
+	final static String PCODEBY_REVIEW = "select * from review where ocode=(select ocode from buy where gcode=?) order by rcode desc";
+	final static String RCODEBY_REVIEW = "select * from review where rcode=?";
+	final static String ALL_REVIEW = "select * from review order by rcode desc";
+	final static String UPDATE_REVIEW = "update review set resdate=sysdate, rcontent=?, rpoint=? where id=? and rcode=?";
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName(driver);

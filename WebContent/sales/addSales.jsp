@@ -35,7 +35,9 @@
 							<input type="hidden" id="email" name="email" value="${user.email }">
 							<input type="hidden" id="utel" name="utel" value="${user.tel }">
 							<input type="hidden" id="uaddr" name="uaddr" value="${user.addr }">
-							<input type="hidden" id="bnum" name="bnum" value="${bnum }">
+							<c:if test="${!empty bnum}">
+								<input type="hidden" id="bnum" name="bnum" value="${bnum }">
+							</c:if>
 						</td>
 					</tr>
 					<tr>

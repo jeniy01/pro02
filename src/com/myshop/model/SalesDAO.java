@@ -342,6 +342,7 @@ public class SalesDAO {
 		return pay;
 	}
 	
+	//관리자 배송정보 등록
 	public int surveyUpdate(Buy buy){
 		int cnt = 0;
 		try {
@@ -362,7 +363,8 @@ public class SalesDAO {
 		return cnt;
 	}
 
-	public int cancleSales(String ocode, String gcode, int amount) {
+	//반품 처리
+	public int cancleSales(String ocode, String pcode, int amount) {
 		int cnt = 0;
 		try {
 			con = Oracle11.getConnection();
@@ -377,7 +379,7 @@ public class SalesDAO {
 			
 			pstmt = con.prepareStatement(Oracle11.RETURN_PRODUCT);
 			pstmt.setInt(1, amount);
-			pstmt.setString(2, gcode);
+			pstmt.setString(2, pcode);
 			cnt = cnt + pstmt.executeUpdate();
 			
 			con.commit();	//수동 커밋
@@ -392,12 +394,14 @@ public class SalesDAO {
 		return cnt;
 	}
 
+	//반품 요청 처리
 	public int returnSales(String ocode) {
 		int cnt = 0;
 		try {
 			con = Oracle11.getConnection();
 			pstmt = con.prepareStatement(Oracle11.RETURN_SALES);
-			pstmt.setString(1, ocode);
+			pstmt.setString(1, "반품요청");
+			pstmt.setString(2, ocode);
 			cnt = pstmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -409,12 +413,14 @@ public class SalesDAO {
 		return cnt;
 	}
 
+	//구매 완료 처리
 	public int okSales(String ocode) {
 		int cnt = 0;
 		try {
 			con = Oracle11.getConnection();
 			pstmt = con.prepareStatement(Oracle11.OK_SALES);
-			pstmt.setString(1, ocode);
+			pstmt.setString(1, "구매완료");
+			pstmt.setString(2, ocode);
 			cnt = pstmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
