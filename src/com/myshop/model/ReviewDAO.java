@@ -93,12 +93,12 @@ public class ReviewDAO {
 	
 	
 	//해당 상품의 리뷰 불러오기
-	public ArrayList<Review> getPcodeByReview(String pcode){
+	public ArrayList<Review> getGcodeByReview(String gcode){
 		ArrayList<Review> rList = new ArrayList<Review>();
 		try {
 			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.PCODEBY_REVIEW);
-			pstmt.setString(1, pcode);
+			pstmt = con.prepareStatement(Oracle11.GCODEBY_REVIEW);
+			pstmt.setString(1, gcode);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				Review rev = new Review();

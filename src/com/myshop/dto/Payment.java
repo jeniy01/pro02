@@ -5,7 +5,7 @@ import java.util.Date;
 public class Payment {
 	private	String pnum;
 	private	String id;
-	private	String Gcode;
+	private	String gcode;
 	private	String ptype;
 	private	String ptnum;
 	private	int	pprice;
@@ -29,10 +29,10 @@ public class Payment {
 		this.id = id;
 	}
 	public String getGcode() {
-		return Gcode;
+		return gcode;
 	}
 	public void setGcode(String gcode) {
-		this.Gcode = gcode;
+		this.gcode = gcode;
 	}
 	public String getPtype() {
 		return ptype;

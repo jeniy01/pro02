@@ -251,7 +251,7 @@ public class ProductDAO {
 		String gcode = "";
 		try {
 			con = Oracle11.getConnection();
-			pstmt = con.prepareStatement(Oracle11.PCODE_GENERATOR);
+			pstmt = con.prepareStatement(Oracle11.GCODE_GENERATOR);
 			pstmt.setString(1, cate);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
@@ -333,6 +333,7 @@ public class ProductDAO {
 		return cnt;
 	}
 
+	//제품 정보 변경
 	public int updateProduct(Product pro) {
 		int cnt =0 ;
 		try {
@@ -359,6 +360,7 @@ public class ProductDAO {
 		return cnt;
 	}
 
+	//제품 삭제
 	public int deleteProduct(String gcode) {
 		int cnt =0 ;
 		try {
@@ -377,6 +379,7 @@ public class ProductDAO {
 		return cnt;
 	}
 	
+	//판매 처리
 	public int salesProduct(String gcode, int amount){
 		int cnt =0 ;
 		try {
@@ -394,5 +397,35 @@ public class ProductDAO {
 		}
 		Oracle11.close(pstmt, con);
 		return cnt;
+	}
+	
+	public ArrayList<Product> notSalesList() {
+		ArrayList<Product> nList = new ArrayList<Product>();
+		try {
+			con = Oracle11.getConnection();
+			pstmt = con.prepareStatement(Oracle11.NOT_SALES_PRODUCT);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Product pro = new Product();
+				pro.setGcode(rs.getString("gcode"));
+				pro.setGname(rs.getString("gname"));
+				pro.setGram(rs.getString("gram"));
+				pro.setPrice(rs.getInt("price"));
+				pro.setMung(rs.getString("mung"));
+				pro.setAmount(rs.getInt("amount"));
+				pro.setPic1(rs.getString("pic1"));
+				pro.setPic2(rs.getString("pic2"));
+				pro.setPic3(rs.getString("pic3"));
+				pro.setCate(rs.getString("cate"));
+				nList.add(pro);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, con);
+		}
+		return nList;
 	}
 }

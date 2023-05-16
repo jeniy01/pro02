@@ -364,7 +364,7 @@ public class SalesDAO {
 	}
 
 	//반품 처리
-	public int cancleSales(String ocode, String pcode, int amount) {
+	public int cancleSales(String ocode, String gcode, int amount) {
 		int cnt = 0;
 		try {
 			con = Oracle11.getConnection();
@@ -379,7 +379,7 @@ public class SalesDAO {
 			
 			pstmt = con.prepareStatement(Oracle11.RETURN_PRODUCT);
 			pstmt.setInt(1, amount);
-			pstmt.setString(2, pcode);
+			pstmt.setString(2, gcode);
 			cnt = cnt + pstmt.executeUpdate();
 			
 			con.commit();	//수동 커밋

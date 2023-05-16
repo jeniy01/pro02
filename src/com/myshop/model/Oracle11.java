@@ -43,13 +43,14 @@ public class Oracle11 {
 	final static String PRODUCT_CATE_SELECT3 = "select * from product where cate like concat(?, '%')";
 	final static String FIRST_CATEGORY_SELECT = "select distinct substr(cate,1,2) as ct, categroup from category group by substr(cate,1,2), categroup order by ct";
 	final static String SECOND_CATEGORY_SELECT = "select cate, catename from category where cate like ?||'%' order by cate";
-	final static String PCODE_GENERATOR = "select gcode from (select * from product where cate=? order by gcode desc) where rownum = 1";
+	final static String GCODE_GENERATOR = "select gcode from (select * from product where cate=? order by gcode desc) where rownum = 1";
 	final static String INSERT_PRODUCT = "insert into product values(?,?,?,?,?,?,?,?,?,?)";
 	final static String RECEIPT_PRODUCT = "update product set amount=amount+?, price=? where gcode=?";
 	final static String UPDATE_PRODUCT = "update product set amount=amount+?, price=? where gcode=?";
 	final static String UPDATE_PRODUCT2 = "update product set gname=?, gram=?, price=?, mung=?, amount=?, pic1=?, pic2=?, pic3=? where gcode=?";
 	final static String SALES_PRODUCT = "update product set amount=amount-? where gcode=?";
 	final static String DELETE_PRODUCT = "delete from product where gcode=?";
+	final static String NOT_SALES_PRODUCT = "select * from product where gcode not in (select gcode from buy)";
 	
 	//장바구니 관련 SQL
 	final static String BASKET_SELECT_ALL = "select * from basket order by bnum desc";
@@ -87,10 +88,11 @@ public class Oracle11 {
 	final static String REVIEW_PRODUCT = "select * from product where gcode = (select gcode from buy where ocode=?)";
 	final static String RCODE_GENERATOR = "select rcode from (select * from review order by rcode desc) where rownum = 1";
 	final static String ADD_REVIEW = "insert into review values (?,?,?,default,?,?)";
-	final static String PCODEBY_REVIEW = "select * from review where ocode=(select ocode from buy where gcode=?) order by rcode desc";
+	final static String GCODEBY_REVIEW = "select * from review where ocode=(select ocode from buy where gcode=?) order by rcode desc";
 	final static String RCODEBY_REVIEW = "select * from review where rcode=?";
 	final static String ALL_REVIEW = "select * from review order by rcode desc";
 	final static String UPDATE_REVIEW = "update review set resdate=sysdate, rcontent=?, rpoint=? where id=? and rcode=?";
+	final static String DELETE_REVIEW = "delete from review where rcode=?";
 	
 	public static Connection getConnection() throws ClassNotFoundException, SQLException {
 		Class.forName(driver);
