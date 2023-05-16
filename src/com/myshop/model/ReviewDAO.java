@@ -93,7 +93,7 @@ public class ReviewDAO {
 	
 	
 	//해당 상품의 리뷰 불러오기
-	public ArrayList<Review> getGcodeByReview(String gcode){
+	public ArrayList<Review> getPcodeByReview(String gcode){
 		ArrayList<Review> rList = new ArrayList<Review>();
 		try {
 			con = Oracle11.getConnection();
@@ -157,6 +157,24 @@ public class ReviewDAO {
 			pstmt.setString(3, rev.getId());
 			pstmt.setString(4, rev.getRcode());
 			
+			cnt = pstmt.executeUpdate();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(pstmt, con);
+		}
+		return cnt;
+	}
+	
+	//리뷰 수정하기
+	public int deleteReview(String rcode){
+		int cnt = 0;
+		try {
+			con = Oracle11.getConnection();
+			pstmt = con.prepareStatement(Oracle11.DELETE_REVIEW);
+			pstmt.setString(1, rcode);
 			cnt = pstmt.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

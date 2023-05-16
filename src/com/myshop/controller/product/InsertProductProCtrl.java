@@ -57,10 +57,10 @@ public class InsertProductProCtrl extends HttpServlet {
 				n++;
 			}
 			
-			if (fileName[0] == null) { // 파일이 업로드 되지 않았을때
+			if (fileName[2] == null) { // 파일이 업로드 되지 않았을때
 				System.out.print("파일1 업로드 실패");
 			} else {
-				pro.setPic1("img/"+fileName[0]);
+				pro.setPic1("img/"+fileName[2]);
 			}
 			
 			if (fileName[1] == null) { // 파일이 업로드 되지 않았을때
@@ -69,10 +69,10 @@ public class InsertProductProCtrl extends HttpServlet {
 				pro.setPic2("img/"+fileName[1]);
 			}
 
-			if (fileName[2] == null) { // 파일이 업로드 되지 않았을때
+			if (fileName[0] == null) { // 파일이 업로드 되지 않았을때
 				System.out.print("파일3 업로드 실패");
 			} else {
-				pro.setPic3("img/"+fileName[2]);
+				pro.setPic3("img/"+fileName[0]);
 			}
 			
 			pro.setGcode(multi.getParameter("gcode"));

@@ -55,7 +55,6 @@ public class GetNoticeCtrl extends HttpServlet {
 				| NoSuchAlgorithmException | InvalidKeySpecException
 				| InvalidAlgorithmParameterException | BadPaddingException
 				| IllegalBlockSizeException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		request.setAttribute("user", user);

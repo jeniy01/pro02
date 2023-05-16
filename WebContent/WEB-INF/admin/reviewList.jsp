@@ -39,11 +39,11 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<c:if test="${sid.equals('admin') }">
+		<%-- <c:if test="${sid.equals('admin') }">
 		<div class="btn-group">
 			<a href="${path1 }/InsertProduct.do" class="btn btn-danger">상품 등록</a>
 		</div>
-		</c:if>
+		</c:if> --%>
 	</div>
 </div>
 <%@ include file="../../footer.jsp" %>

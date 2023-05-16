@@ -36,7 +36,7 @@
 						
 					</td>
 					<td>${noti.name }</td>
-					<%-- <td><a href="${path1 }/GetNotice.do?idx=${noti.idx }">${noti.title }</a></td>
+					<%-- <td><a href="${path1 }/GetNotice.do?idx=${noti.name }">${noti.title }</a></td>
 					<td>${noti.author }</td> --%>
 					<td>
 						<fmt:parseDate value="${noti.resdate }" var="resdate" pattern="yyyy-MM-dd HH:mm:ss" />

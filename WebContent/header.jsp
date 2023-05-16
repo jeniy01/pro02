@@ -116,10 +116,10 @@
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="${path1 }/NoticeList.do">공지사항 관리</a></li>
 		            <li><a href="${path1 }/AdminReviewList.do">이용후기 관리</a></li>
-		            <li><a href="${path1 }/AdminQnaList.do">질문 및 답변 관리</a></li>
+		            <li><a href="${path1 }/QnaList.do">질문 및 답변 관리</a></li>
 		            <li class="divider"></li>
-		            <li><a href="${path1 }/AdminFaqList.do">자주하는 질문 관리</a></li>
-		            <li><a href="${path1 }/AdminDataList.do">자료실 관리</a></li>
+		            <li><a href="${path1 }/FaqList.do">자주하는 질문 관리</a></li>
+		            <li><a href="${path1 }/DataList.do">자료실 관리</a></li>
 		          </ul>
 		        </li>
 		      </ul>

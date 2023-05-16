@@ -14,6 +14,55 @@ public class ProductDAO {
 	private Connection con = null;
 	private PreparedStatement pstmt = null;
 	private ResultSet rs = null;
+	
+	//카테고리 목록 불러오기
+	public ArrayList<CategoryVO> getCategoryList(){
+		ArrayList<CategoryVO> cateList = new ArrayList<CategoryVO>();
+		try {
+			con = Oracle11.getConnection();
+			pstmt = con.prepareStatement(Oracle11.CATEGORY_ALL);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				CategoryVO cate = new CategoryVO();
+				cate.setCate(rs.getString("cate"));
+				cate.setCategroup(rs.getString("categroup"));
+				cate.setCatename(rs.getString("catename"));
+				cateList.add(cate);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, con);
+		}
+		return cateList;
+	}
+		
+	//카테고리 그룹 불러오기
+	public ArrayList<CategoryVO> getCategoryName(String categroup) {
+		ArrayList<CategoryVO> cateList = new ArrayList<CategoryVO>();
+		try {
+			con = Oracle11.getConnection();
+			pstmt = con.prepareStatement(Oracle11.CATEGORY_SELECT);
+			pstmt.setString(1, categroup);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				CategoryVO cate = new CategoryVO();
+				cate.setCate(rs.getString("cate"));
+				cate.setCategroup(rs.getString("categroup"));
+				cate.setCatename(rs.getString("catename"));
+				cateList.add(cate);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			Oracle11.close(rs, pstmt, con);
+		}
+		return cateList;
+	}
 
 	//상품 상세 보기
 	public Product getProduct(String gcode){

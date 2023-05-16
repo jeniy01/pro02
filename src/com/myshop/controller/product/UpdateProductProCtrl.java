@@ -62,10 +62,10 @@ public class UpdateProductProCtrl extends HttpServlet {
 			String ori_pic2 = multi.getParameter("ori_pic2");
 			String ori_pic3 = multi.getParameter("ori_pic3");
 			
-			if (fileName[0] == null) { // 파일이 업로드 되지 않았을때
+			if (fileName[2] == null) { // 파일이 업로드 되지 않았을때
 				pro.setPic1(ori_pic1);
 			} else {
-				pro.setPic1("img/"+fileName[0]);
+				pro.setPic1("img/"+fileName[2]);
 			}
 			
 			if (fileName[1] == null) { // 파일이 업로드 되지 않았을때
@@ -74,10 +74,10 @@ public class UpdateProductProCtrl extends HttpServlet {
 				pro.setPic2("img/"+fileName[1]);
 			}
 
-			if (fileName[2] == null) { // 파일이 업로드 되지 않았을때
+			if (fileName[0] == null) { // 파일이 업로드 되지 않았을때
 				pro.setPic3(ori_pic3);
 			} else {
-				pro.setPic3("img/"+fileName[2]);
+				pro.setPic3("img/"+fileName[0]);
 			}
 			gcode = multi.getParameter("gcode");
 			pro.setGcode(gcode);

@@ -51,7 +51,9 @@ public class InsertNoticeProCtrl extends HttpServlet {
 			fileName = multi.getFilesystemName("file1"); // 업로드하고, 업로드된 파일의 이름 얻기
 			if (fileName == null) { // 파일이 업로드 되지 않았을때
 				System.out.print("파일 업로드 실패");
-			}  // 파일이 업로드 되었을때
+			} else {
+				noti.setFile1("data/"+fileName);
+			}
 			author = multi.getParameter("author");
 			title = multi.getParameter("title");
 			content = multi.getParameter("content");
@@ -61,7 +63,6 @@ public class InsertNoticeProCtrl extends HttpServlet {
 		
 		noti.setTitle(title);
 		noti.setContent(content);
-		/*noti.setFile1(fileName);*/
 		noti.setAuthor(author);
 		int cnt = ndao.insertNotice(noti);	
 		if(cnt==0){ //글쓰기 실패

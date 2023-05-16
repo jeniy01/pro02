@@ -42,7 +42,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="submit" value="이용후기 남기기" class="btn btn-primary">
+							<input type="submit" value="구매 후기 작성" class="btn btn-primary">
 							<a href="javascript:history.go(-1)" class="btn btn-primary">뒤로 가기</a>				
 						</td>
 					</tr>

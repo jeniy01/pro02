@@ -15,11 +15,11 @@
 .comment { width:auto; height:60px; overflow: hidden;  text-overflow: ellipsis; 
  display: -webkit-box;  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical; }
-.thumb_box { width:145px; margin:24px auto; margin-bottom:10px; height:auto; overflow:hidden;
+.thumb_box { width:150px; margin:24px auto; margin-bottom:10px; height:auto; overflow:hidden;
 padding-top:5px; padding-bottom:5px; 
 border:1px solid #e0e0f0; text-align:center; }
 .thumb_box::after { content:""; display:block; clear:both; }
-.thumb_box img { width:auto; height:193px; }  
+.thumb_box img { width:auto; height:140px; }  
 .pro_title { overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
 </style>
 </head>
