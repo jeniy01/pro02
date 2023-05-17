@@ -21,7 +21,7 @@
 	<div class="container-fluid">
 		<h2>질문 글 수정</h2>
 		<p>${msg }</p>
-		<form action="${path1 }/UpdateQnaPro.do" method="post" enctype="multipart/form-data">
+		<form action="${path1 }/UpdateQnaPro.do" method="post" enctype="form-data">
 			<table class="table">
 				<tbody>
 					<tr>
