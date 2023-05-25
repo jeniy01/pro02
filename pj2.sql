@@ -492,7 +492,7 @@ select * from category order by cate asc
 select * from category where categroup=? order by cate asc
 
 
--- FAQ 테이블 만들기
+-- QNA 테이블 만들기
 create table qna(qno varchar2(8) primary key,
 title varchar2(100), content varchar2(1000), author varchar2(20), 
 resdate date default sysdate, lev number(11), parno varchar2(8), 
